@@ -17,9 +17,9 @@ RUN CGO_ENABLED=0 GOOS=linux go build -v -o helloworld
 # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
 FROM alpine
 
-RUN chmod a+x /go/src/github.com/bluebosh/knap-example/*
 # Copy the binary to the production image from the builder stage.
 COPY --from=builder /go/src/github.com/bluebosh/knap-example /helloworld
+RUN chmod a+x /helloworld/*
 
 # Service must listen to $PORT environment variable.
 # This default value facilitates local development.
