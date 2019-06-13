@@ -18,7 +18,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -v -o picalc2
 FROM alpine
 
 # Copy the binary to the production image from the builder stage.
-COPY --from=builder /go/src/github.com/bluebosh/picalc2 /picalc2
+COPY --from=builder /go/src/github.com/bluebosh/knap-example/picalc2 /picalc2
 
 # Service must listen to $PORT environment variable.
 # This default value facilitates local development.
